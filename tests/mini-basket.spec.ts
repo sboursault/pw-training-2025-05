@@ -1,5 +1,4 @@
 import { test, expect } from '../support/fixtures'
-import { CataloguePage } from '../support/page-objects/catalogue.page'
 
 test('The mini basket toggle shows the number of products in the basket"', async ({
   page,
