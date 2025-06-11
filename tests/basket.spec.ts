@@ -13,19 +13,26 @@ test('After login, the basket contains the items from my last session', async ({
   page,
   loginPage,
   cataloguePage,
+  loginApi,
 }) => {
-  await page.goto('/accounts/login/')
-  await loginPage.login('tom@test.com', 'tom@test.com')
-  await expect(page.getByText('Bienvenue')).toBeVisible()
+  // await page.goto('/accounts/login/')
+  // await loginPage.login('tom@test.com', 'tom@test.com')
+  // await expect(page.getByText('Bienvenue')).toBeVisible()
+
+  loginApi.login('tom@test.com', 'tom@test.com')
+  page.goto('/')
 
   await cataloguePage.addProductToBasket(209)
   await expect(cataloguePage.minibasketToggleButton).toContainText('(1)')
 
   await page.goto('/accounts/logout')
 
-  await page.goto('/accounts/login/')
-  await loginPage.login('tom@test.com', 'tom@test.com')
-  await expect(page.getByText('Bienvenue')).toBeVisible()
+  // await page.goto('/accounts/login/')
+  // await loginPage.login('tom@test.com', 'tom@test.com')
+  // await expect(page.getByText('Bienvenue')).toBeVisible()
+
+  loginApi.login('tom@test.com', 'tom@test.com')
+  page.goto('/')
 
   await expect(cataloguePage.minibasketToggleButton).toContainText('(1)')
 })
