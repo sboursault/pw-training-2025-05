@@ -17,4 +17,10 @@ export class LoginPage {
       .getByRole('button', { name: 'Connexion' })
   }
 
+  async login(username: string, password: string) {
+    await this.loginField.fill(username)
+    await this.passwordField.fill(password)
+    await this.LoginButton.click()
+  }
+
 }

@@ -1,8 +1,3 @@
-/*
-A shopper can login with valid credentials
-A shopper can't login with invalid credentials
-An error is shown on invalid password
-*/
 
 import { test, expect } from '../support/fixtures'
 
