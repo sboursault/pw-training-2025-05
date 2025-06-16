@@ -18,4 +18,13 @@ export class CataloguePage {
   async addProductToBasket(productId: number) {
     await this.page.getByTestId('product-pod-add-button-' + productId).click()
   }
+
+  async expectBasketToBeEmpty() {
+    await expect(this.minibasketToggleButton).toHaveText('Panier')
+    await expect(this.minibasketToggleButton).not.toContainText('(')
+  }
+
+  async expectProductCountInBasketToBe(count: number) {
+    await expect(this.minibasketToggleButton).toContainText('(' + count + ')')
+  }
 }
